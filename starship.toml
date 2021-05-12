@@ -2,7 +2,7 @@ add_newline = true
 
 # The $all format doesn't work here because of the inverted pyramids prompt...
 # So I copy-pasted the $all default from starship.rs and modified it :)
-format = """$line_break
+format = """$line_break\
 $docker_context\
 $package\
 $cmake\
@@ -48,7 +48,7 @@ $battery\
 $time\
 $status\
 $shell
-[${custom.show_pyramid}](bold fg:241) $directory[≈](gray) ${custom.whoami}\
+[${custom.show_first_pyramid}](bold fg:241) $directory${custom.whoami}\
 $username\
 $hostname\
 $shlvl\
@@ -58,7 +58,7 @@ $git_branch\
 $git_commit\
 $git_state\
 $git_status\
-$hg_branch[⧨](bold fg:241) """
+$hg_branch[${custom.show_second_pyramid}](bold fg:241) """
 
 [rust]
 format = "[$symbol($version)]($style) "
@@ -67,9 +67,13 @@ style = "bold bg:211 fg:black"
 [cmd_duration]
 format = "⏱️ [:$duration](underline bold fg:145) "
 
-[custom.show_pyramid]
-when = "./test_dir"
+[custom.show_first_pyramid]
+when = "~/.config/starship_bins/test_dir"
 format = "◮"
+
+[custom.show_second_pyramid]
+when = "~/.config/starship_bins/test_dir"
+format = "⧨"
 
 [custom.whoami]
 # Unix-based systems only
@@ -79,7 +83,11 @@ format = "◮"
 # Changes to NT equivalent on Windows
 command = "whoami"
 # Change to "1" on Windows
-when = "true"
+when = "~/.config/starship_bins/test_dir_long"
+format = "[≈](gray) $output "
+
+[custom.sudo]
+when = "$EUID"
 
 [nodejs]
 format = "[JS $symbol]($style)"
@@ -90,6 +98,6 @@ style = "bold fg:black bg:208"
 symbol = "🎁"
 
 [directory]
-truncation_length = 5
+truncation_length = 4
 truncation_symbol = "◀ "
 style = "bold 251"

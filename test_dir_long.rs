@@ -7,7 +7,7 @@ fn main() -> Result<(), u32> {
   if dirs[1] == "Users" && dir_len >= 2 {
     dir_len -= 2
   }
-  if dir_len >= 2 {
+  if dir_len >= 4 {
     return Err(1)
   }
   Ok(())
