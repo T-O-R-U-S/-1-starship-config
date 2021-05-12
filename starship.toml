@@ -1,0 +1,92 @@
+add_newline = true
+
+# The $all format doesn't work here because of the inverted pyramids
+# So I copy-pasted the $all default from starship.rs :)
+format = """$line_break[◮](bold fg:241) $directory[≈](gray) ${custom.whoami}\
+$username\
+$hostname\
+$shlvl\
+$kubernetes\
+$vcsh\
+$git_branch\
+$git_commit\
+$git_state\
+$git_status\
+$hg_branch\
+$docker_context\
+$package\
+$cmake\
+$dart\
+$deno\
+$dotnet\
+$elixir\
+$elm\
+$erlang\
+$golang\
+$helm\
+$java\
+$julia\
+$kotlin\
+$nim\
+$nodejs\
+$ocaml\
+$perl\
+$php\
+$purescript\
+$python\
+$red\
+$ruby\
+$rust\
+$scala\
+$swift\
+$terraform\
+$vagrant\
+$zig\
+$nix_shell\
+$conda\
+$memory_usage\
+$aws\
+$gcloud\
+$openstack\
+$env_var\
+$crystal\
+$custom\
+$cmd_duration\
+$lua\
+$jobs\
+$battery\
+$time\
+$status\
+$shell[⧨](bold fg:241) """
+
+[git_branch]
+symbol = "🐙 "
+
+[rust]
+format = "[$symbol($version)]($style) "
+style = "bold bg:211 fg:black"
+
+[cmd_duration]
+format = "⏱️ [:$duration](underline bold fg:145) "
+
+[custom.whoami]
+# Unix-based systems only
+# I mean... where else would you run Starship?
+# NT kernel sux.
+
+# Changes to NT equivalent on Windows
+command = "whoami"
+# Change to "1" on Windows
+when = "true"
+
+[nodejs]
+format = "[JS $symbol]($style)"
+
+[package]
+format = " [ver](34): $symbol[$version]($style) "
+style = "bold fg:black bg:208"
+symbol = "🎁"
+
+[directory]
+truncation_symbol = "◁ "
+style = "bold 251"
