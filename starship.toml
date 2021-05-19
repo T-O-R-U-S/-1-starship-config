@@ -48,17 +48,18 @@ $battery\
 $time\
 $status\
 $shell
-[${custom.show_first_pyramid}](bold fg:241) $directory${custom.whoami}\
-$username\
-$hostname\
-$shlvl\
+[${custom.left_pyramid}](bold fg:241)$directory${custom.whoami}\
 $kubernetes\
 $vcsh\
 $git_branch\
 $git_commit\
 $git_state\
 $git_status\
-$hg_branch[${custom.show_second_pyramid}](bold fg:241) """
+$hg_branch\
+$shlvl\
+$hostname\
+[${custom.right_pyramid}](bold fg:241)$username"""
+# fg:241
 
 [rust]
 format = "[$symbol($version)]($style) "
@@ -67,13 +68,22 @@ style = "bold bg:211 fg:black"
 [cmd_duration]
 format = "⏱️ [:$duration](underline bold fg:145) "
 
-[custom.show_first_pyramid]
-when = "~/.config/starship_bins/test_dir"
-format = "◮"
+[shlvl]
+format = "[#]($style)"
 
-[custom.show_second_pyramid]
+[username]
+format = "[#]($style) "
+style_user = "blue bold"
+show_always = true
+disabled = false
+
+[custom.left_pyramid]
 when = "~/.config/starship_bins/test_dir"
-format = "⧨"
+format = "◮ "
+
+[custom.right_pyramid]
+when = "~/.config/starship_bins/test_dir"
+format = "⧨ "
 
 [custom.whoami]
 # Unix-based systems only
@@ -84,10 +94,7 @@ format = "⧨"
 command = "whoami"
 # Change to "1" on Windows
 when = "~/.config/starship_bins/test_dir_long"
-format = "[≈](gray) $output "
-
-[custom.sudo]
-when = "$EUID"
+format = "[≈](gray) [$output](blue) "
 
 [nodejs]
 format = "[JS $symbol]($style)"
