@@ -1,6 +1,7 @@
-mod shared
+mod shared;
+
 use std::env::current_dir;
-use shared::is_home
+use shared::is_home;
 
 fn main() -> Result<(), u32> {
   let c_dir = current_dir().unwrap();
