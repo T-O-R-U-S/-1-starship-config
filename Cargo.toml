@@ -1,0 +1,6 @@
+[bin]
+name = "star_conf"
+path = "."
+
+[dependencies]
+"libc" = "0.2.94"
